@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+{% block link %}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static '../static/sttyle.css' %}?v=22" type="text/css">
+{% endblock %}
+    {% block head %}
+    <title>Base</title>
+    {% endblock %}
+</head>
+<body>
+
+   <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Social Network</a>
+    </div>
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/account/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+
+    </ul>
+  </div>
+</nav>
+
+<br><br>
+{% block body %}
+    <h1>Base</h1>
+{% endblock %}
+</body>
+</html>
