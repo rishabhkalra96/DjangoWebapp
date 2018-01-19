@@ -127,3 +127,6 @@ STATIC_URL = '/static/'
 Above line has been deprecated and a newer version exists in the template dictionary
 '''
 LOGIN_REDIRECT_URL = '/account/'
+# added below parameters for email reset functionality
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
