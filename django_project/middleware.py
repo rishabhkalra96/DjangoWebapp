@@ -2,6 +2,7 @@ from django.conf import settings
 import re
 from django.shortcuts import redirect
 from django.contrib.auth import logout
+from django.urls import reverse
 
 
 EXEMPT_URLS = [re.compile(settings.LOGIN_URL.lstrip('/'))]
@@ -26,7 +27,7 @@ class LoginRequiredMiddleware:
         #       return redirect(settings.LOGIN_URL)
         login_url_exempted = any(url.match(path) for url in EXEMPT_URLS)
 
-        if path == 'account/logout/':
+        if path == reverse('logout').lstrip('/'):
             logout(request)
 
         if request.user.is_authenticated() and login_url_exempted:
