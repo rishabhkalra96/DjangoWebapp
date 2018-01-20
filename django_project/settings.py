@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_project.middleware.LoginRequiredMiddleware'
 ]
 
 ROOT_URLCONF = 'django_project.urls'
@@ -127,6 +128,11 @@ STATIC_URL = '/static/'
 Above line has been deprecated and a newer version exists in the template dictionary
 '''
 LOGIN_REDIRECT_URL = '/account/'
+LOGIN_URL = '/account/login/'
+LOGIN_EXEMPT_URLS = (
+    r'^account/logout/$',
+    r'^account/register/$'
+)
 # added below parameters for email reset functionality
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
