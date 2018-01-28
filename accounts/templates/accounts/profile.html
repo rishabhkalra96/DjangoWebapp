@@ -5,11 +5,17 @@
 
 {% block body %}
     <div class="container">
-    <h1>Profile</h1>
+    <h1>
+        Profile
+    </h1>
     <p>Welcome to your profile, {{ user.username }}</p>
+        <p>Description of the user : {{ user.userprofile.description }}</p>
     <h5>Other details</h5>
-    <p>NAME     :   {{ user.first_name }} {{ user.last_name }}</p>
-    <p>EMAIL     :   {{ user.email }}</p>
-    <p>PASSWORD(encrypted)     :   {{ user.password }}</p>
+    <p>NAME         :   {{ user.first_name }} {{ user.last_name }}</p>
+    <p>EMAIL        :   {{ user.email }}</p>
+    <p>PHONE NUMBER :   {{ user.userprofile.phone }}</p>
+{#    <p>PASSWORD(encrypted)     :   {{ user.password }}</p>#}
+        <img src="{{ user.userprofile.image.url }}" width="240">
+
     </div>
 {% endblock %}
