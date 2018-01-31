@@ -6,10 +6,6 @@ from django.contrib.auth import update_session_auth_hash
 # Create your views here.
 
 
-def home(request):
-    return render(request, 'accounts/home.html')
-
-
 def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
