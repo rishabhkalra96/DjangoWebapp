@@ -21,7 +21,7 @@
     </div>
     {% if user.is_authenticated %}
     <ul class="nav navbar-nav">
-        <li><a href="/account" >Home</a></li>
+        <li><a href="{% url 'home:home' %}" >Home</a></li>
         <li><a href="{% url 'accounts:profile' %}" >Profile</a></li>
         <li><a href="{% url 'accounts:edit_profile' %}" >Edit Profile</a></li>
         <li><a href="{% url 'accounts:change_password' %}" >Change Password</a></li>
