@@ -1,3 +1,20 @@
+# from django.http import HttpResponse
+# from django.shortcuts import render
+#
+# # Create your views here.
+#
+#
+# def home(request):
+#     return render(request, 'home/home.html')
+# The above method can also be implemented in a different way, by using class bsed views , implemented below
 from django.shortcuts import render
+from django.views.generic import TemplateView
+from home.forms import HomeForm
 
-# Create your views here.
+
+class HomeView(TemplateView):
+    template_name = 'home/home.html'
+
+    def get(self, request):
+        form = HomeForm()
+        return render(request, self.template_name, {'form':form})
