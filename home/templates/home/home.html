@@ -13,5 +13,10 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
         <p><h1>The text you entered is : {{ text }}</h1></p>
+        <h3>List of all the posts :</h3>
+    {% for post in posts %}
+        <h1>{{ post.post }}</h1>
+        <p>{{ post.date }}</p>
+    {% endfor %}
     </div>
 {% endblock %}
