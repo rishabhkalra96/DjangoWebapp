@@ -14,9 +14,13 @@
     </form>
         <p><h1>The text you entered is : {{ text }}</h1></p>
         <h3>List of all the posts :</h3>
+
     {% for post in posts %}
+        <div style="background: #DCDCDC " !important class="jumbotron">
         <h1>{{ post.post }}</h1>
         <p>{{ post.date }}</p>
+        </div>
     {% endfor %}
+
     </div>
 {% endblock %}
