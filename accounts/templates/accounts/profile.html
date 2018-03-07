@@ -15,7 +15,9 @@
     <p>EMAIL        :   {{ user.email }}</p>
     <p>PHONE NUMBER :   {{ user.userprofile.phone }}</p>
 {#    <p>PASSWORD(encrypted)     :   {{ user.password }}</p>#}
+        {% if user.userprofile.image %}
         <img src="{{ user.userprofile.image.url }}" width="240">
+        {% endif %}
 
     </div>
 {% endblock %}
