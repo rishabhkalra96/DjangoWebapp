@@ -3,6 +3,7 @@ from accounts.forms import RegistrationForm, EditProfileForm
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.models import User
 # Create your views here.
 
 
@@ -19,8 +20,13 @@ def register(request):
         return render(request, 'accounts/reg_form.html', args)
 
 
-def profile(request):
-    args = {'user': request.user}
+def profile(request, pk=None):
+
+    if pk:
+        user = User.objects.get(pk=pk)
+    else:
+        user = request.user
+    args = {'user': user}
     return render(request, 'accounts/profile.html', args)
 
 
