@@ -8,3 +8,7 @@ class Post(models.Model):
     Post = models.CharField(max_length=500)
     user = models.ForeignKey(User)
     date = models.DateTimeField(auto_now=True)
+
+
+class Friend(models.Model):
+    users = models.ManyToManyField(User)
