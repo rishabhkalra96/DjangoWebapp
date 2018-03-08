@@ -11,7 +11,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 
 from home.forms import HomeForm
-from home.models import Post
+from home.models import Post, Friend
 from django.contrib.auth.models import User
 
 
@@ -31,9 +31,19 @@ class HomeView(TemplateView):
             post = form.save(commit=False)
             post.user = request.user
             text = form.cleaned_data['post']
-
             post.save()
             return redirect('home:home')
         text = form.cleaned_data['post']
         args = {'form': form, 'text': text}
         return render(request, self.template_name, args)
+
+
+def change_friends(request, operation, pk):
+    new_friend = User.objects.get(pk=pk)
+
+    if operation == 'add':
+        Friend.make_friend(request.user,new_friend)
+    elif operation == 'remove':
+        Friend.lose_friend(request.user, pk=pk)
+
+    return redirect('home:home')
