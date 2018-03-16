@@ -22,8 +22,22 @@
             </div>
         {% endfor %}
     </div>
-    <div class="col-md-4">
-        <h1>Other People</h1>
+
+    <div class="col-md-4 jumbotron" id="other">
+    <style>
+        #other {
+            background-color: #999999 !important;
+            min-height: 150px;
+            position: relative;
+            margin-top: 5em;
+            padding-top: 1%;
+        }
+        .container .jumbotron {
+            padding-top: 10px;
+            padding-left: 15px;
+        }
+    </style>
+        <h2>Other People</h2>
         {% for user in users %}
             <a href="{% url 'accounts:view_profile_with_primary_key' pk=user.pk %}">
                 <h3>
