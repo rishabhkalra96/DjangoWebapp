@@ -11,7 +11,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 
 from home.forms import HomeForm
-from home.models import Post
+from home.models import Post, Friend
 from django.contrib.auth.models import User
 
 
@@ -20,9 +20,14 @@ class HomeView(TemplateView):
 
     def get(self, request):
         form = HomeForm()
-        posts = Post.objects.all().order_by('-date')
+        posts = Post.objects.all().order_by('-created')
         users = User.objects.exclude(id=request.user.id)
-        args = {'form': form, 'posts': posts, 'users': users}
+        friend = Friend.objects.get(current_user=request.user)
+        friends = friend.users.all()
+        args = {
+            'form': form, 'posts': posts,
+            'users': users, 'friends': friends,
+        }
         return render(request, self.template_name, args)
 
     def post(self, request):
@@ -30,10 +35,22 @@ class HomeView(TemplateView):
         if form.is_valid():
             post = form.save(commit=False)
             post.user = request.user
-            text = form.cleaned_data['post']
-
             post.save()
+
+            text = form.cleaned_data['post']
+            form = HomeForm()
             return redirect('home:home')
-        text = form.cleaned_data['post']
-        args = {'form': form, 'text': text}
+
+        args = {'form': form, 'text': text, }
         return render(request, self.template_name, args)
+
+
+def change_friends(request, operation, pk):
+    friend = User.objects.get(pk=pk)
+
+    if operation == 'add':
+        Friend.make_friend(request.user, friend)
+    elif operation == 'remove':
+        Friend.lose_friend(request.user, pk=pk)
+
+    return redirect('home:home')

@@ -1,22 +1,31 @@
 {% extends 'base.html' %}
 {% block head %}
-    <title>PROFILE</title>
+    {% if user.first_name %}
+        {% with a as b %}
+            <title>{{ user.first_name }}'s profile</title>
+        {% endwith %}
+    {% else %}
+        <title>{{ user.username }}'s profile</title>
+
+    {% endif %}
+
 {% endblock %}
 
 {% block body %}
-    <div class="container">
-    <h1>
-        Profile
-    </h1>
-    <p>Welcome to your profile, {{ user.username }}</p>
-        <p>Description of the user : {{ user.userprofile.description }}</p>
-    <h5>Other details</h5>
+    <div class="container jumbotron">
+        <h1>{{ user.username }}'s<span style="font-size: medium"> Profile</span></h1>
+
+        <p>Description : {{ user.userprofile.description }}</p>
+    <br><br>
     <p>NAME         :   {{ user.first_name }} {{ user.last_name }}</p>
     <p>EMAIL        :   {{ user.email }}</p>
     <p>PHONE NUMBER :   {{ user.userprofile.phone }}</p>
-{#    <p>PASSWORD(encrypted)     :   {{ user.password }}</p>#}
         {% if user.userprofile.image %}
-        <img src="{{ user.userprofile.image.url }}" width="240">
+            {% with a as b %}
+                <img src="{{ user.userprofile.image.url }}" width="240">
+            {% endwith %}
+        {% else %}
+            <h6>(No image uploaded ) </h6>
         {% endif %}
 
     </div>
