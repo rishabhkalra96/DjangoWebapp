@@ -7,6 +7,8 @@ from django.db import models
 class Post(models.Model):
     Post = models.CharField(max_length=500)
     user = models.ForeignKey(User)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now_add=True)
     date = models.DateTimeField(auto_now=True)
 
 
