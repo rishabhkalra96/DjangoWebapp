@@ -43,7 +43,7 @@
             </style>
             <h2 style="text-align: center">Friends</h2>
             {% for friend in friends %}
-                <a href="{% url 'accounts:view_profile_with_primary_key' pk=user.pk %}">
+                <a href="{% url 'accounts:view_profile_with_primary_key' pk=friend.pk %}">
                     <h3>
                         {{ friend.username }}
                     </h3>
