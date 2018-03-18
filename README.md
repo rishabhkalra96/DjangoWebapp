@@ -12,4 +12,4 @@ This is a WebApp(Side project) made by me to explore Django framework and practi
 For further changes, contact the author of the project at "itsme.rishabhk@gmail.com" before committing into the master.
 
 
-NOTE: For any future commits to the repository, please create/pull new branch named "contributions_issue_#" , where # is the issue name or number.
+NOTE: For any future commits to the repository, please do not contribute to the master directly, instead make contributions to the CONTRIBUTION branch and create a pull request so that the author/authors can review your changes and merge them manually to the master if no clashes were encountered. Having contributing to the master directly can lead to banning of your account from using this project.
