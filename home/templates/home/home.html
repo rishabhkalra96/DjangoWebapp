@@ -12,7 +12,7 @@
                 {% csrf_token %}
                 {{ form.post }}
                 <br>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type= "submit" class="btn btn-primary">Submit</button>
             </form>
             <br>
         {% for post in posts %}
@@ -23,39 +23,53 @@
         {% endfor %}
     </div>
 
-    <div class="col-md-4 jumbotron" id="other">
-    <style>
-        #other {
-            background-color: #999999 !important;
-            min-height: 150px;
-            position: relative;
-            margin-top: 5em;
-            padding-top: 1%;
-        }
-        .container .jumbotron {
-            padding-top: 10px;
-            padding-left: 15px;
-        }
-    </style>
-        <h2>Friends</h2>
-        {% for friend in friends %}
-            <a href="{% url 'accounts:view_profile_with_primary_key' pk=user.pk %}">
-                <h3>
-                    {{ friend.username }}
-                </h3>
-            </a>
-        {% endfor %}
+    <div class="col-md-4 ">
+        <div class="jumbotron" id="other">
 
-        <h2>Other People</h2>
-        {% for user in users %}
-            <a href="{% url 'accounts:view_profile_with_primary_key' pk=user.pk %}">
-                <h3>
-                    {{ user.username }}
-                </h3>
-            </a>
-        {% endfor %}
+            <style>
+
+                #other {
+
+                    background-color: #DCDCDC !important;
+                    min-height: 150px;
+                    position: relative;
+                    margin-top: 5em;
+                    padding-top: 1%;
+                }
+                .container .jumbotron {
+                    padding-top: 10px;
+                    padding-left: 15px;
+                }
+            </style>
+            <h2 style="text-align: center">Friends</h2>
+            {% for friend in friends %}
+                <a href="{% url 'accounts:view_profile_with_primary_key' pk=user.pk %}">
+                    <h3>
+                        {{ friend.username }}
+                    </h3>
+                </a>
+                <a href="{% url 'home:change_friends' operation='remove' pk=friend.pk %}">
+                <button type="button" class="btn btn-danger btn-xs">Remove Friend</button>
+                </a>
+            {% endfor %}
+        </div>
+
+        <div class="jumbotron" id="other">
+            <h2 style="text-align: center">Other People</h2>
+            {% for user in users %}
+                {% if user not in friends %}
+                <a href="{% url 'accounts:view_profile_with_primary_key' pk=user.pk %}">
+                    <h3>
+                        {{ user.username }}
+                    </h3>
+                </a>
+                <a href="{% url 'home:change_friends' operation='add' pk=user.pk %}">
+                <button type="button" class="btn btn-success btn-xs">Add Friend</button>
+                </a>
+                {% endif %}
+                {% endfor %}
+        </div>
+
     </div>
-
-
     </div>
 {% endblock %}
