@@ -1,9 +1,5 @@
 # from django.http import HttpResponse
 # from django.shortcuts import render
-#
-# # Create your views here.
-#
-#
 # def home(request):
 #     return render(request, 'home/home.html')
 # The above method can also be implemented in a different way, by using class bsed views , implemented below
@@ -51,6 +47,6 @@ def change_friends(request, operation, pk):
     if operation == 'add':
         Friend.make_friend(request.user, friend)
     elif operation == 'remove':
-        Friend.lose_friend(request.user, pk=pk)
+        Friend.lose_friend(request.user, friend)
 
     return redirect('home:home')
