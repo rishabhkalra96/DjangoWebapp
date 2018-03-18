@@ -1,15 +1,7 @@
-Socio-Network !
+SOCIO-NETWORK CONTRIBUTION BRANCH
 
-This is a WebApp(Side project) made by me to explore Django framework and practice it. The project aims at developing a Social Network webapp having basic authentication and features such as user creation, adding or removing friends, viewing their profile etc. Features provided in the webApp are as follows:
-
-1. Create/Register a new user
-2. Login for a registered user
-3. Upload a profile picture
-4. Reset your password via email.
-5. View other people registered on the webApp.
-6. Add or remove Friends from your profile.( currently under development ).
-
-For further changes, contact the author of the project at "itsme.rishabhk@gmail.com" before committing into the master.
+This is the cloned branch from the master of the SOCIO-NETWORK webapp. All the respective changes are to be made in this branch only.Guidelines are pretty simple to contribute. If you want to resolve any issue or work on a new feature, simply work here and contribute. After making a pull request, the author/author's will manually merge your branch to the master if no clashes were encountered.
 
 
-NOTE: For any future commits to the repository, please create/pull new branch named "contributions_issue_#" , where # is the issue name or number.
+
+SEE YOU SOON.......
