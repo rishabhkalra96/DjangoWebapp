@@ -130,7 +130,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'django_project/media')
 '''
 Above line has been deprecated and a newer version exists in the template dictionary
 '''
-LOGIN_REDIRECT_URL = '/account/'
+LOGIN_REDIRECT_URL = '/account/home/'
 LOGIN_URL = '/account/login/'
 LOGIN_EXEMPT_URLS = (
     r'^account/logout/$',
